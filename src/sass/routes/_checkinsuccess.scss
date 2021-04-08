@@ -1,0 +1,36 @@
+.checkinsuccess {
+    background: $button-bg;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .wrapper {
+        .anticon {
+            color: $bgcolor;
+            font-size: 6em;
+            margin-bottom: 0.25em;
+            @include respond-to('small') {
+                font-size: 4em;
+                width: 100%;
+            }
+        }
+        h1 {
+            color: $bgcolor;
+            font-family: $merryweather-font;
+            font-size: 4em;
+            @include respond-to('small') {
+                font-size: 3em;
+                text-align: center;
+            }
+        }
+        p {
+            color: $bgcolor;
+            font-family: $merryweather-font;
+            font-size: 2em;
+            @include respond-to('small') {
+                font-size: 1.5em;
+                text-align: center;
+            }
+        }
+    }
+}
