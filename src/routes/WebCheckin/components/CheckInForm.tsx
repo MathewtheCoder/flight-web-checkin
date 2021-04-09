@@ -5,6 +5,7 @@ import {useHistory} from 'react-router-dom'
 import {createServer, Response} from 'miragejs'
 import { PERSONAL_INFO } from 'constants/routes';
 import * as API from 'constants/api'
+import {CheckInData} from 'types'
 
 const CheckInForm = () => {
   const history = useHistory()
@@ -30,7 +31,7 @@ const CheckInForm = () => {
       )
     },
   })
-  const onFinish = (values: any) => {
+  const onFinish = (values: CheckInData) => {
     console.log('Received values of form: ', values);
     updateLoading(true)
     fetch(API.CHECK_FLIGHT, {

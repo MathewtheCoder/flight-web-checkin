@@ -11,32 +11,29 @@ import {
 import {useHistory} from 'react-router-dom'
 import moment from 'moment'
 import { REVIEW_INFO } from 'constants/routes';
+import { PersonalData, CheckInData } from 'types'
 import countries from './countries'
 
 const { Option } = Select
 
-type PersonalInfoState = {
-    last_name: string;
-    flight_no: string;
-};
 type Rules = {
   [key: string]: Array<string>
 }
 const PersonalInfoForm = () => {
-  const [countryCode, setCountryCode] = React.useState<any>();
+  const [countryCode, setCountryCode] = React.useState<string>();
   const [form] = Form.useForm();
-  const history = useHistory<PersonalInfoState>()
+  const history = useHistory<CheckInData | PersonalData>()
   // Transform moment date object to strings
-  const transformDateToString = (items: any) => {
+  const transformDateToString = (items: PersonalData) => {
     const dateItems = ["passportIssueDate", "passportExpiryDate", "birth_date"]
     Object.keys(items).forEach(itemKey => {
       if (dateItems.includes(itemKey)) {
-        items[itemKey] = items[itemKey]?.toString()
+        items[itemKey as keyof PersonalData] = items[itemKey as keyof PersonalData]?.toString()
       }
     })
     return items
   }
-  const onFinish = (values: any) => {
+  const onFinish = (values: PersonalData) => {
     console.log('Received values of form: ', transformDateToString(values));
     history.push(REVIEW_INFO, transformDateToString(values))
   };
@@ -46,7 +43,8 @@ const PersonalInfoForm = () => {
    * @param name 
    * @returns {Boolean}
    */
-  const isVisible = (countryCode:string, name: string):boolean => {
+  const isVisible = (countryCode:string | undefined, name: string):boolean => {
+      if (!countryCode) return false;
       const rules: Rules = {
           "AT": ["country", "city", "passportExpiryDate"],
           "BE": ["birth_date", "country", "city", "address"],
@@ -97,7 +95,7 @@ const PersonalInfoForm = () => {
             filterOption={(input, option) =>
                 option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
             }
-            onChange={(nationality) => {
+            onChange={(nationality: string) => {
                 form.setFieldsValue({nationality})
                 setCountryCode(nationality)
             }}
@@ -219,7 +217,7 @@ const PersonalInfoForm = () => {
             />
           </Form.Item>
       )}
-      {["ES", "AT", "BE", "FR"].includes(countryCode) && <h3>Residence</h3>}
+      {["ES", "AT", "BE", "FR"].includes(countryCode || '') && <h3>Residence</h3>}
       {isVisible(countryCode, "city") && (
           <Form.Item
             name="city"

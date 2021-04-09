@@ -6,29 +6,13 @@ import { CheckOutlined } from '@ant-design/icons';
 import {createServer} from 'miragejs'
 import { CHECKIN_SUCCESS } from 'constants/routes';
 import * as API from 'constants/api'
+import {PersonalData} from 'types';
 
-type ReviewInfoHistoryState = {
-    first_name: string;
-    last_name: string;
-    nationality: string;
-    mobileno: string;
-    email: string;
-    passportNo: string;
-    passportIssueDate?: any;
-    passportCity?: string;
-    passportCountry?: string;
-    passportExpiryDate?: any;
-    birth_date?: any;
-    birth_place?: string;
-    city?: string;
-    country?: string;
-    address?: string;
-};
 type JSON = {
     [key: string]: string
 }
 const ReviewInfoContainer = (): JSX.Element => {
-    const history = useHistory<ReviewInfoHistoryState>()
+    const history = useHistory<PersonalData>()
     const [loading, updateLoading] = useState(false)
     // Mock Api for mock check in completion
     createServer({
@@ -91,8 +75,8 @@ const ReviewInfoContainer = (): JSX.Element => {
                     <List.Item>
                         <Card title={labelMapper[key]} className="dataItem">
                             {dateItems.includes(key) ?
-                                moment(data[key as keyof ReviewInfoHistoryState]).format('YYYY-MM-DD') :
-                                data[key as keyof ReviewInfoHistoryState]}
+                                moment(data[key as keyof PersonalData]).format('YYYY-MM-DD') :
+                                data[key as keyof PersonalData]}
                         </Card>
                     </List.Item>
                 )}
