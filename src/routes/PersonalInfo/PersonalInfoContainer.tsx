@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react'
+import React from 'react'
 import PersonalInfoForm from './components/PersonalInfoForm'
 import {useHistory} from 'react-router-dom'
 

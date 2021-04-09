@@ -4,4 +4,8 @@
 @import 'routes/_checkinsuccess';
 @import 'routes/_webcheckin';
 @import 'routes/_personalinfo';
-@import 'routes/_reviewinfo'
+@import 'routes/_reviewinfo';
+
+body {
+    background: $bgcolor;
+}

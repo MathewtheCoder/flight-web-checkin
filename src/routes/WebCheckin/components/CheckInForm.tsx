@@ -1,13 +1,26 @@
 import { Form, Input, Button } from 'antd';
 import { GlobalOutlined, UserOutlined, SearchOutlined } from '@ant-design/icons';
 import {useHistory} from 'react-router-dom'
+import {createServer} from 'miragejs'
 import { PERSONAL_INFO } from 'constants/routes';
 
 const CheckInForm = () => {
   const history = useHistory()
+  createServer({
+    routes() {
+        this.get("/api/users", () => [
+        { id: "1", name: "Luke" },
+        { id: "2", name: "Leia" },
+        { id: "3", name: "Anakin" },
+        ])
+    },
+  })
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
-    history.push(PERSONAL_INFO, values)
+    fetch("/api/users")
+      .then((response) => response.json())
+      .then((json) => console.log(json))
+    // history.push(PERSONAL_INFO, values)
   };
   return (
     <Form
