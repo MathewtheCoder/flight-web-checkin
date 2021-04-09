@@ -19,6 +19,9 @@ type PersonalInfoState = {
     last_name: string;
     flight_no: string;
 };
+type Rules = {
+  [key: string]: Array<string>
+}
 const PersonalInfoForm = () => {
   const [countryCode, setCountryCode] = React.useState<any>();
   const [form] = Form.useForm();
@@ -44,14 +47,13 @@ const PersonalInfoForm = () => {
    * @returns {Boolean}
    */
   const isVisible = (countryCode:string, name: string):boolean => {
-      const rules = {
+      const rules: Rules = {
           "AT": ["country", "city", "passportExpiryDate"],
           "BE": ["birth_date", "country", "city", "address"],
           "FR": ["birth_date", "birth_place", "country", "city"],
           "GR": ["passportExpiryDate", "passportIssueDate", "passportCountry", "passportCity"],
           "ES": ["address"],
       }
-      // @ts-ignore
       return rules[countryCode]?.includes(name) ?? false
   }
 

@@ -24,6 +24,9 @@ type ReviewInfoHistoryState = {
     country?: string;
     address?: string;
 };
+type JSON = {
+    [key: string]: string
+}
 const ReviewInfoContainer = (): JSX.Element => {
     const history = useHistory<ReviewInfoHistoryState>()
     const [loading, updateLoading] = useState(false)
@@ -31,14 +34,13 @@ const ReviewInfoContainer = (): JSX.Element => {
     createServer({
         routes() {
             this.post(API.COMPLETE_CHECKIN, (_schema, request) => {
-              console.log(JSON.parse(request.requestBody));
               return {message: "Checkin Complete"}
-          })
+            })
         },
     })
     const dataKeys = Object.keys(history.location.state)
     const data = history.location.state
-    const labelMapper = {
+    const labelMapper: JSON = {
         first_name: "First Name",
         last_name: "Last Name",
         nationality: "Nationality",
@@ -85,12 +87,12 @@ const ReviewInfoContainer = (): JSX.Element => {
                 grid={{ gutter: 16, column: 1 }}
                 dataSource={dataKeys.filter(key => key !== "agreement")}
                 className="dataList"
-                renderItem={(key: any) => (
+                renderItem={(key: string) => (
                     <List.Item>
-                        {/* @ts-ignore */}
                         <Card title={labelMapper[key]} className="dataItem">
-                            {/* @ts-ignore */}
-                            {dateItems.includes(key) ? moment(data[key]).format('YYYY-MM-DD') : data[key]}
+                            {dateItems.includes(key) ?
+                                moment(data[key as keyof ReviewInfoHistoryState]).format('YYYY-MM-DD') :
+                                data[key as keyof ReviewInfoHistoryState]}
                         </Card>
                     </List.Item>
                 )}
