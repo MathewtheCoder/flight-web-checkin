@@ -1,9 +1,11 @@
-import React from 'react'
+import {useState} from 'react'
 import { useHistory } from 'react-router-dom'
-import {List, Card, Button} from 'antd'
+import {List, Card, Button, message} from 'antd'
 import moment from 'moment'
 import { CheckOutlined } from '@ant-design/icons';
+import {createServer} from 'miragejs'
 import { CHECKIN_SUCCESS } from 'constants/routes';
+import * as API from 'constants/api'
 
 type ReviewInfoHistoryState = {
     first_name: string;
@@ -24,6 +26,16 @@ type ReviewInfoHistoryState = {
 };
 const ReviewInfoContainer = (): JSX.Element => {
     const history = useHistory<ReviewInfoHistoryState>()
+    const [loading, updateLoading] = useState(false)
+    // Mock Api for mock check in completion
+    createServer({
+        routes() {
+            this.post(API.COMPLETE_CHECKIN, (_schema, request) => {
+              console.log(JSON.parse(request.requestBody));
+              return {message: "Checkin Complete"}
+          })
+        },
+    })
     const dataKeys = Object.keys(history.location.state)
     const data = history.location.state
     const labelMapper = {
@@ -44,7 +56,25 @@ const ReviewInfoContainer = (): JSX.Element => {
         address: "Address"
     }
     // Redirect to success page after success save
-    const completeCheckin = () => history.push(CHECKIN_SUCCESS)
+    const completeCheckin = () => {
+        updateLoading(true)
+        fetch(API.COMPLETE_CHECKIN, {
+            method: "POST",
+            body: JSON.stringify(data),
+        })
+        .then((response) => response.json())
+        .then((json) => {
+            if (json?.errors) {
+                message.error('Please check your info again.')
+                updateLoading(false)
+            } else {
+                history.replace(CHECKIN_SUCCESS)
+            }
+        }).catch(_err => {
+            updateLoading(false)
+            message.error('Please check your info again.')
+        })
+    }
     const dateItems = ["passportIssueDate", "passportExpiryDate", "birth_date"]
     return (
         <main className="reviewInfo">
@@ -72,6 +102,8 @@ const ReviewInfoContainer = (): JSX.Element => {
                 block
                 size="large"
                 onClick={completeCheckin}
+                loading={loading}
+                disabled={loading}
             >
                 Confirm <CheckOutlined />
             </Button>
