@@ -1,0 +1,28 @@
+.webcheckin {
+    background: $bgcolor;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .formWrapper {
+        width: 768px;
+        padding: 150px;
+        @include respond-to('small') {
+            width: 100%;
+            padding: 50px;
+        }
+        h1 {
+            font-family: $merryweather-font;
+            color: $text-color;
+            font-size: 2.5em;
+            @include respond-to('small') {
+                font-size: 2em;
+            }
+        }
+        .submitBtn {
+            background: $button-bg;
+            font-family: $poppins-font;
+            font-weight: 400;
+        }
+    }
+}
