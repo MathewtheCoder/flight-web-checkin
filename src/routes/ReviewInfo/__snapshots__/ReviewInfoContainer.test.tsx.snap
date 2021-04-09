@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReviewInfoContainer tests renders correctly ReviewInfoContainer page 1`] = `
+<main
+  className="reviewInfo"
+>
+  <div
+    className="formWrapper"
+  >
+    <h1>
+      Please review your information.
+    </h1>
+    <List
+      className="dataList"
+      dataSource={Array []}
+      grid={
+        Object {
+          "column": 1,
+          "gutter": 16,
+        }
+      }
+      renderItem={[Function]}
+      size="large"
+    />
+    <Button
+      block={true}
+      className="submitBtn"
+      disabled={false}
+      htmlType="button"
+      loading={false}
+      onClick={[Function]}
+      size="large"
+      type="primary"
+    >
+      Confirm 
+      <ForwardRef(CheckOutlined) />
+    </Button>
+  </div>
+</main>
+`;

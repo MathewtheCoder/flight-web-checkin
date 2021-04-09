@@ -22,8 +22,8 @@ const ReviewInfoContainer = (): JSX.Element => {
             })
         },
     })
-    const dataKeys = Object.keys(history.location.state)
-    const data = history.location.state
+    const dataKeys = Object.keys(history?.location?.state ?? {})
+    const data = history?.location?.state ?? {}
     const labelMapper: JSON = {
         first_name: "First Name",
         last_name: "Last Name",

@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckInSuccessContainer tests renders correctly CheckInSuccess page 1`] = `
+<main
+  className="checkinsuccess"
+>
+  <div
+    className="wrapper"
+  >
+    <ForwardRef(CheckCircleFilled)
+      className="check"
+    />
+    <h1>
+      You've been checked in!
+    </h1>
+    <p>
+      Enjoy your flight!
+    </p>
+    <Button
+      block={true}
+      className="actionBtn"
+      htmlType="button"
+      onClick={[Function]}
+      size="large"
+      type="primary"
+    >
+      CheckIn for another flight 
+      <ForwardRef(RollbackOutlined) />
+    </Button>
+  </div>
+</main>
+`;
+
+exports[`CheckInSuccessContainer tests renders list-items 1`] = `
+<main
+  className="checkinsuccess"
+>
+  <div
+    className="wrapper"
+  >
+    <ForwardRef(CheckCircleFilled)
+      className="check"
+    />
+    <h1>
+      You've been checked in!
+    </h1>
+    <p>
+      Enjoy your flight!
+    </p>
+    <Button
+      block={true}
+      className="actionBtn"
+      htmlType="button"
+      onClick={[Function]}
+      size="large"
+      type="primary"
+    >
+      CheckIn for another flight 
+      <ForwardRef(RollbackOutlined) />
+    </Button>
+  </div>
+</main>
+`;

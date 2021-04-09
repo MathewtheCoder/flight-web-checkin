@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonalInfoContainer tests renders correctly PersonalInfoContainer page 1`] = `
+<main
+  className="webcheckin"
+>
+  <div
+    className="formWrapper"
+  >
+    <h1>
+      Hi, 
+      !
+    </h1>
+    <PersonalInfoForm />
+  </div>
+</main>
+`;

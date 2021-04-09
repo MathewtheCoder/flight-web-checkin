@@ -1,10 +1,11 @@
 import React from 'react';
 import { shallow, toJson } from 'tests/enzyme';
-import App from './App';
+import Router from './Router';
 
-describe('App tests', () => {
-  it('renders correctly App page', () => {
-    const wrapper = shallow(<App />);
+describe('Router tests', () => {
+
+  it('renders correctly Router', () => {
+    const wrapper = shallow(<Router />);
     // Expect the wrapper object to be defined
     expect(toJson(wrapper)).toMatchSnapshot();
   });

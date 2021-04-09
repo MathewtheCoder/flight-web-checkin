@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Router tests renders Router component 1`] = `
+<BrowserRouter>
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      key="/"
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="/personal-info"
+      path="/personal-info"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="/review-info"
+      path="/review-info"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="/checkin-success"
+      path="/checkin-success"
+    />
+  </Switch>
+</BrowserRouter>
+`;
+
+exports[`Router tests renders correctly Router 1`] = `
+<BrowserRouter>
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      key="/"
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="/personal-info"
+      path="/personal-info"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="/review-info"
+      path="/review-info"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="/checkin-success"
+      path="/checkin-success"
+    />
+  </Switch>
+</BrowserRouter>
+`;
+
+exports[`Router tests renders list-items 1`] = `
+<BrowserRouter>
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      key="/"
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="/personal-info"
+      path="/personal-info"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="/review-info"
+      path="/review-info"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      key="/checkin-success"
+      path="/checkin-success"
+    />
+  </Switch>
+</BrowserRouter>
+`;

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WebCheckinContainer tests renders correctly ReviewInfoContainer page 1`] = `
+<main
+  className="webcheckin"
+>
+  <div
+    className="formWrapper"
+  >
+    <h1>
+      Welcome to your web check-in
+    </h1>
+    <CheckInForm />
+  </div>
+</main>
+`;
