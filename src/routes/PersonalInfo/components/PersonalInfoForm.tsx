@@ -207,7 +207,7 @@ const PersonalInfoForm = () => {
       )}
       {isVisible(countryCode, "birth_place") && (
           <Form.Item
-            name="city"
+            name="birth_place"
             rules={[{ required: true, message: 'Please enter your place of birth!' }]}
           >
             <Input
