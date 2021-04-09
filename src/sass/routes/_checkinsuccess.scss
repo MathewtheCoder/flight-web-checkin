@@ -2,11 +2,12 @@
     background: $button-bg;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 0 2em;
     .wrapper {
-        .anticon {
+        .check {
             color: $bgcolor;
             font-size: 6em;
             margin-bottom: 0.25em;
@@ -31,6 +32,18 @@
             @include respond-to('small') {
                 font-size: 1.5em;
                 text-align: center;
+            }
+        }
+        .actionBtn {
+            margin-top: 2em;
+            background: $button-bg;
+            font-family: $poppins-font;
+            font-weight: 600;
+            color: $bgcolor;
+            border: 1px solid $bgcolor;
+            &:hover {
+                background: $bgcolor;
+                color: $button-bg;
             }
         }
     }
