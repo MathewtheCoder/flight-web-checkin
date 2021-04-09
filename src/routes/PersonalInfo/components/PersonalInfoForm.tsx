@@ -9,6 +9,7 @@ import {
     HomeOutlined
 } from '@ant-design/icons';
 import {useHistory} from 'react-router-dom'
+import moment from 'moment'
 import { REVIEW_INFO } from 'constants/routes';
 import countries from './countries'
 
@@ -24,7 +25,7 @@ const PersonalInfoForm = () => {
   const history = useHistory<PersonalInfoState>()
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
-    // history.push(REVIEW_INFO, values)
+    history.push(REVIEW_INFO, values)
   };
   /**
    * Define the nationality based form filters
@@ -87,6 +88,7 @@ const PersonalInfoForm = () => {
                 form.setFieldsValue({nationality})
                 setCountryCode(nationality)
             }}
+            size="large"
         >
             {countries.map(country => (
                 <Option value={country.value}>{country.text}</Option>
@@ -136,6 +138,7 @@ const PersonalInfoForm = () => {
                 format="YYYY-MM-DD"
                 size="large"
                 placeholder="Passport Issue Date"
+                disabledDate={d => d && d.isSameOrAfter(moment())}
             />
           </Form.Item>
       )}
@@ -173,6 +176,7 @@ const PersonalInfoForm = () => {
                 format="YYYY-MM-DD"
                 size="large"
                 placeholder="Passport Expiry Date"
+                disabledDate={d => d && d.isSameOrBefore(moment())}
             />
           </Form.Item>
       )}
@@ -186,6 +190,7 @@ const PersonalInfoForm = () => {
                 format="YYYY-MM-DD"
                 size="large"
                 placeholder="Date of Birth"
+                disabledDate={d => d && d.isSameOrAfter(moment())}
             />
           </Form.Item>
       )}
