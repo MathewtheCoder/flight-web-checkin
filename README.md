@@ -21,7 +21,7 @@ Check it out here: [Link](https://flight-web-checkin.vercel.app)
 - ```sass``` - sass directory
 
 ## Testing creds
-ON the initial use these creds to go forward.
+ON the root route these creds to go forward.
 1) Flight no ```ABC123```, Last Name - ```Luke```
 2) Flight no ```TY123```, Last Name - ```Anakin```
 3) Flight no ```XYZ56```, Last Name - ```Leia```
