@@ -1,4 +1,4 @@
-.personalInfo {
+.reviewInfo {
     background: $bgcolor;
     height: 100%;
     display: flex;
@@ -17,6 +17,17 @@
             font-size: 2.5em;
             @include respond-to('small') {
                 font-size: 2em;
+            }
+        }
+        .dataList {
+            .ant-list-item {
+                padding: 0;
+            }
+            .dataItem {
+                font-family: $poppins-font;
+                .ant-card-head-title {
+                    font-weight: 600;
+                }
             }
         }
         .submitBtn {

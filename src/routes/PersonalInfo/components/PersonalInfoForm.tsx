@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Input, Button, Select, Checkbox, DatePicker } from 'antd';
 import {
     UserOutlined,
-    SearchOutlined,
+    ArrowRightOutlined,
     MailOutlined,
     PhoneOutlined,
     ReadOutlined,
@@ -23,9 +23,19 @@ const PersonalInfoForm = () => {
   const [countryCode, setCountryCode] = React.useState<any>();
   const [form] = Form.useForm();
   const history = useHistory<PersonalInfoState>()
+  // Transform moment date object to strings
+  const transformDateToString = (items: any) => {
+    const dateItems = ["passportIssueDate", "passportExpiryDate", "birth_date"]
+    Object.keys(items).forEach(itemKey => {
+      if (dateItems.includes(itemKey)) {
+        items[itemKey] = items[itemKey]?.toString()
+      }
+    })
+    return items
+  }
   const onFinish = (values: any) => {
-    console.log('Received values of form: ', values);
-    history.push(REVIEW_INFO, values)
+    console.log('Received values of form: ', transformDateToString(values));
+    history.push(REVIEW_INFO, transformDateToString(values))
   };
   /**
    * Define the nationality based form filters
@@ -44,6 +54,7 @@ const PersonalInfoForm = () => {
       // @ts-ignore
       return rules[countryCode]?.includes(name) ?? false
   }
+
   return (
     <Form
       form={form}
@@ -265,7 +276,7 @@ const PersonalInfoForm = () => {
           block
           size="large"
         >
-          <SearchOutlined /> Search Flight
+          Continue <ArrowRightOutlined />
         </Button>
       </Form.Item>
     </Form>
